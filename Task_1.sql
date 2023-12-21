@@ -20,5 +20,6 @@ WHERE
     CASE
         WHEN t1.salary < t2.salary THEN 'rise'
         WHEN t1.salary > t2.salary THEN 'fall'
+        WHEN t1.salary = t2.salary THEN 'no_change'
         ELSE 'no_data'
     END = 'fall';

@@ -4,7 +4,7 @@ SELECT
     t.name,
     t.salary,
     t.product,
-    ROUND((t.salary / t.value), 2) AS number_of_pieces,
+    ROUND((t.salary / t.price), 2) AS number_of_pieces,
     t.price_unit
 FROM 
     t_Michal_Kavan_project_SQL_primary_final t
@@ -22,7 +22,7 @@ SELECT
     t.name,
     t.salary,
     t.product,
-    ROUND((t.salary / t.value), 2) AS number_of_pieces,
+    ROUND((t.salary / t.price), 2) AS number_of_pieces,
     t.price_unit
 FROM 
     t_Michal_Kavan_project_SQL_primary_final t

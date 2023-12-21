@@ -4,14 +4,14 @@ CREATE OR REPLACE VIEW food_percent_change AS
 SELECT 
     payroll_year,
     product,
-    round((change_/value) * 100, 2) AS food_percent_change
+    round((change_/price) * 100, 2) AS food_percent_change
 FROM (
     SELECT
         payroll_year,
         product,
-        value,
-        lag(value) OVER (PARTITION BY product ORDER BY payroll_year) AS lag_value,
-        value - lag(value) OVER (PARTITION BY product ORDER BY payroll_year) AS change_
+        price,
+        lag(price) OVER (PARTITION BY product ORDER BY payroll_year) AS lag_value,
+        price - lag(price) OVER (PARTITION BY product ORDER BY payroll_year) AS change_
     FROM
         t_Michal_Kavan_project_SQL_primary_final
 ) AS subquery
@@ -36,7 +36,7 @@ FROM (
         lag(salary) OVER (PARTITION BY name ORDER BY payroll_year) AS salary_previous,
         salary - lag(salary) OVER (PARTITION BY name ORDER BY payroll_year) AS salary_change
     FROM
-        test
+        t_Michal_Kavan_project_SQL_primary_final
 ) AS subquery
 WHERE name IS NOT NULL 
 	AND salary_previous IS NOT NULL 
